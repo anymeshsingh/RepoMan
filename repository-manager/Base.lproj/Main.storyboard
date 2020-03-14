@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,45 +674,244 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="repository_manager" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="R2V-B0-nI4">
-            <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
-                    </connections>
-                </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="250"/>
-        </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="XfG-lQ-9wD" customClass="LoginViewController" customModule="repository_manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="167"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qMa-t3-kz3">
+                                <rect key="frame" x="91" y="110" width="159" height="37"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="RepoMan" id="BRl-Ft-y7O">
+                                    <font key="font" size="30" name="Montserrat-ExtraBold"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="exterior" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3J-ES-Hpd">
+                                <rect key="frame" x="20" y="60" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1qu-we-dl6"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="exterior" alignment="left" placeholderString="Personal Access Token" drawsBackground="YES" id="gVc-Jm-ylX" customClass="CustomTextFieldCell" customModule="repository_manager" customModuleProvider="target">
+                                    <font key="font" size="13" name="Montserrat-Regular"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JnX-h9-U8x" customClass="LoginButton" customModule="repository_manager" customModuleProvider="target">
+                                <rect key="frame" x="18" y="17" width="304" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="yva-3h-rOc"/>
+                                    <constraint firstAttribute="height" constant="30" id="yzv-ez-S4H"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" title="LOGIN" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jw5-1E-rgL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <color key="contentTintColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="login:" target="XfG-lQ-9wD" id="Iui-uD-GcV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JnX-h9-U8x" secondAttribute="bottom" constant="20" id="MgN-Gs-kNY"/>
+                            <constraint firstItem="qMa-t3-kz3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Sz8-nU-gbD"/>
+                            <constraint firstItem="qMa-t3-kz3" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="ZaD-8m-dov"/>
+                            <constraint firstAttribute="trailing" secondItem="JnX-h9-U8x" secondAttribute="trailing" constant="20" id="b8f-lk-Gov"/>
+                            <constraint firstItem="g3J-ES-Hpd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="gZ5-11-w6M"/>
+                            <constraint firstItem="g3J-ES-Hpd" firstAttribute="top" secondItem="qMa-t3-kz3" secondAttribute="bottom" constant="20" id="jap-Lm-cfk"/>
+                            <constraint firstItem="JnX-h9-U8x" firstAttribute="top" secondItem="g3J-ES-Hpd" secondAttribute="bottom" constant="10" id="tUd-OI-XPe"/>
+                            <constraint firstItem="g3J-ES-Hpd" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="v9g-vu-1De"/>
+                            <constraint firstAttribute="trailing" secondItem="g3J-ES-Hpd" secondAttribute="trailing" constant="20" id="vZd-mN-wEW"/>
+                            <constraint firstItem="JnX-h9-U8x" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="wI3-r1-ACc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="JnX-h9-U8x" id="5jU-gR-NB6"/>
+                        <outlet property="tokenField" destination="g3J-ES-Hpd" id="Fqd-tV-Tem"/>
+                        <outlet property="tokenFieldCell" destination="gVc-Jm-ylX" id="EY5-KM-pXk"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="28" y="703"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="Fzi-r4-DIH">
+            <objects>
+                <viewController storyboardIdentifier="LoadingView" id="Si4-UT-Rlw" customClass="LoadingViewController" customModule="repository_manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="I2Y-E0-Sig">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="89C-Ey-Gmy">
+                                <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="YiA-cN-FNt"/>
+                                    <constraint firstAttribute="width" constant="20" id="brs-AA-cVe"/>
+                                </constraints>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="89C-Ey-Gmy" secondAttribute="trailing" constant="20" id="HHk-E2-DHh"/>
+                            <constraint firstAttribute="bottom" secondItem="89C-Ey-Gmy" secondAttribute="bottom" constant="20" id="Hg5-sz-zGU"/>
+                            <constraint firstItem="89C-Ey-Gmy" firstAttribute="top" secondItem="I2Y-E0-Sig" secondAttribute="top" constant="20" id="YPI-gk-edI"/>
+                            <constraint firstItem="89C-Ey-Gmy" firstAttribute="leading" secondItem="I2Y-E0-Sig" secondAttribute="leading" constant="20" id="iXd-AH-04b"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="89C-Ey-Gmy" id="WBV-8f-oGi"/>
+                    </connections>
+                </viewController>
+                <customObject id="gXx-yW-uyF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-400" y="769"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="usR-f6-YD8">
+            <objects>
+                <viewController storyboardIdentifier="MainView" id="qwo-4X-Bzd" customClass="MainViewController" customModule="repository_manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Jw3-wN-8Xo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0k-Nd-qt3">
+                                <rect key="frame" x="20" y="430" width="280" height="50"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="6Re-ug-HLd">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Xl6-lY-ztW"/>
+                                            <constraint firstAttribute="width" constant="50" id="txr-I9-foO"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="circular" image="NSColorPanel" imagePosition="only" alignment="center" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="XRY-F9-WXu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-ql-miq">
+                                        <rect key="frame" x="57" y="17" width="191" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="username" id="YuN-ru-dIx">
+                                            <font key="font" size="13" name="Montserrat-Regular"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OKV-1Q-XRA">
+                                        <rect key="frame" x="249" y="6" width="37" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Xkc-eq-KOb"/>
+                                            <constraint firstAttribute="width" constant="25" id="yeO-Iu-2C1"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="5Ll-qB-DzQ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiw-ni-ddR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Kae-lZ-3ZO">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="oVP-OD-pGR">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="faj-19-ExR">
+                                                <size key="itemSize" width="280" height="80"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="qwo-4X-Bzd" id="7Ld-cr-4aN"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Tbc-BC-Cd4">
+                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ydm-3n-xLZ">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="uiw-ni-ddR" firstAttribute="leading" secondItem="Jw3-wN-8Xo" secondAttribute="leading" id="Jf6-T7-Bhq"/>
+                            <constraint firstAttribute="trailing" secondItem="uiw-ni-ddR" secondAttribute="trailing" id="Kh0-s4-jCr"/>
+                            <constraint firstItem="uiw-ni-ddR" firstAttribute="top" secondItem="u0k-Nd-qt3" secondAttribute="bottom" constant="15" id="aCt-Bg-GO4"/>
+                            <constraint firstAttribute="bottom" secondItem="uiw-ni-ddR" secondAttribute="bottom" id="ey4-Es-9H0"/>
+                            <constraint firstItem="u0k-Nd-qt3" firstAttribute="leading" secondItem="Jw3-wN-8Xo" secondAttribute="leading" constant="20" id="kqn-vx-Amd"/>
+                            <constraint firstItem="u0k-Nd-qt3" firstAttribute="top" secondItem="Jw3-wN-8Xo" secondAttribute="top" constant="20" id="shT-YV-X5d"/>
+                            <constraint firstAttribute="trailing" secondItem="u0k-Nd-qt3" secondAttribute="trailing" constant="20" id="vcm-UO-H3P"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="oVP-OD-pGR" id="flD-ro-ANe"/>
+                        <outlet property="profileImage" destination="6Re-ug-HLd" id="EIV-Se-OTf"/>
+                        <outlet property="usernameLabel" destination="Ska-ql-miq" id="lA4-qJ-QWl"/>
+                    </connections>
+                </viewController>
+                <customObject id="b7p-bp-mD6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="451" y="902"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="8Fa-oV-Dix">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="E9m-yZ-obd" customClass="TestViewController" customModule="repository_manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="jLk-65-xJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odS-Tl-cDK">
+                                <rect key="frame" x="187" y="165" width="136" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="hTr-Ev-5Ke">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="G8f-8V-Tn6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-65" y="1236"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSColorPanel" width="32" height="32"/>
+    </resources>
 </document>
